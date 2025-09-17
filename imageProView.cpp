@@ -409,4 +409,5 @@ void CimageProView::OnZoomin3()
 	pDoc->ZoomIn_3();
 
 	Invalidate(FALSE);
+	//
 }
