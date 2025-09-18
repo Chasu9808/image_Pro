@@ -4,7 +4,7 @@
 
 
 #pragma once
-
+#include "math.h"
 
 class CimageProDoc : public CDocument
 {
@@ -71,4 +71,6 @@ public:
 	void Flip();
 	void ZoomIn_2();
 	void ZoomIn_3();
+	void ZoomOut();
+	void Rotate();
 };

@@ -573,3 +573,63 @@ void CimageProDoc::ZoomIn_3()
 		}
 
 }
+
+void CimageProDoc::ZoomOut()
+{
+	// TODO: 여기에 구현 코드 추가.
+	for (int x = 0; x < 256; x+=2)
+		for (int y = 0; y < 256; y+=2)
+			ResultImg[x / 2][y / 2] = InputImg[x][y];
+}
+
+void CimageProDoc::Rotate()
+{
+	// TODO: 여기에 구현 코드 추가.
+	double i = 0, j = 0, m = 0, n = 0;
+	int x2 = 0, y2 = 0;
+	double seta = 0, pi = 3.141592;
+
+	seta = pi / 4;
+
+	for (int x = 0; x < 256; x++)
+	{
+		for (int y = 0; y < 256; y++)
+		{
+			i = -1 * ((x - 128) * sin(seta)) + 128;
+			j = (y - 128) * cos(seta);
+			y2 = i + j;
+			
+			m = ((y - 128) * sin(seta)) + 128;
+			n = (x - 128) * cos(seta);
+			x2 = m + n;
+
+		
+			if (x2 >= 0 && x2 < 256 && y2 >= 0 && y2 < 256)
+				ResultImg[x][y] = InputImg[x2][y2];
+			else
+				ResultImg[x][y] = 0;
+		}
+	}
+
+	seta = pi / 6;
+
+	for (int x = 0; x < 256; x++)
+	{
+		for (int y = 0; y < 256; y++)
+		{
+			i = -1 * ((x - 128) * sin(seta)) + 128;
+			j = (y - 128) * cos(seta);
+			y2 = i + j;
+
+			m = ((y - 128) * sin(seta)) + 128;
+			n = (x - 128) * cos(seta);
+			x2 = m + n;
+
+
+			if (x2 >= 0 && x2 < 256 && y2 >= 0 && y2 < 256)
+				InputImg2[x][y] = InputImg[x2][y2];
+			else
+				InputImg2[x][y] = 0;
+		}
+	}
+}
